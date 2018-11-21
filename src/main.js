@@ -17,14 +17,20 @@ import "../lib/mui/css/icons-extra.css";
 
 //导入mintUi
 import { Header, Swipe, SwipeItem } from "mint-ui";
-
+import { Toast } from "mint-ui";
 //注册
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Header.name, Header);
+Vue.component(Toast.name, Toast);
 
 //导入自己的样式文件
 import "../css/comment.less";
+
+//设置全局请求根路径
+Vue.http.options.root = "http://www.lovegf.cn:8899";
+// 全局设置 post 时候表单数据格式组织形式   application/x-www-form-urlencoded
+Vue.http.options.emulateJSON = true;
 
 new Vue({
   el: "#app",

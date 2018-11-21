@@ -38,10 +38,6 @@
 <style lang="less">
 #app_container {
   padding: 40px 0 50px 0;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
   overflow: hidden;
   .v-enter {
     opacity: 0;

@@ -6,8 +6,16 @@ import VueRouter from "vue-router";
 // 1.2 安装路由
 Vue.use(VueRouter);
 
+// 导入vue-resource的包
 import VueResource from "vue-resource";
 Vue.use(VueResource);
+
+//导入moment包, 实现时间格式化插件
+import moment from "moment";
+//定义全局过滤器
+Vue.filter('dateFormat', function (dateStr, pattern="YYYY-MM-DD HH:mm:ss") {
+  return moment(dateStr).format(pattern);
+})
 
 Vue.config.productionTip = false;
 

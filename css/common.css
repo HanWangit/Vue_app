@@ -38,7 +38,6 @@ input,
 select,
 textarea {
   outline: none;
-  border: none;
   background: none;
 }
 textarea {

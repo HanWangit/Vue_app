@@ -2,7 +2,7 @@
     <div class="news-list-container">
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media" v-for="(item) in newsList" :key="item.id">
-                <router-link to="/home/newsInfo">
+                <router-link :to="'/home/newsInfo/'+ item.id">
                     <img class="mui-media-object mui-pull-left" src="../../img/menu1.png">
                     <div class="mui-media-body">
                         <h5 class="mui-ellipsis title">{{item.title}}</h5>
@@ -18,6 +18,7 @@
 
 </template>
 <script>
+import {Toast} from "mint-ui";
 export default {
     data(){
         return {

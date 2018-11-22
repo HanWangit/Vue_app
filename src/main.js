@@ -24,16 +24,15 @@ import "../lib/mui/css/mui.min.css";
 import "../lib/mui/css/icons-extra.css";
 
 //导入mintUi
-import { Header, Swipe, SwipeItem } from "mint-ui";
-import { Toast } from "mint-ui";
+import { Header, Swipe, SwipeItem,Button } from "mint-ui";
 //注册
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Header.name, Header);
-Vue.component(Toast.name, Toast);
+Vue.component(Button.name, Button);
 
 //导入自己的样式文件
-import "../css/comment.less";
+import "../css/common.less";
 
 //设置全局请求根路径
 Vue.http.options.root = "http://www.lovegf.cn:8899";

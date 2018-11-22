@@ -5,6 +5,7 @@ import memberComponent from "./member";
 import searchComponent from "./search";
 import shopcarComponent from "./shopcar";
 import newsListComponent from "./news/newsList.vue";
+import newsInfoComponent from "./news/newsInfo.vue";
 
 export default new Router({
   routes: [
@@ -13,7 +14,8 @@ export default new Router({
     { path: "/member", component: memberComponent },
     { path: "/search", component: searchComponent },
     { path: "/shopcar", component: shopcarComponent },
-    { path: "/home/newsList", component: newsListComponent }
+    { path: "/home/newsList", component: newsListComponent },
+    { path: "/home/newsInfo/:id", component: newsInfoComponent }
   ],
   linkActiveClass: "mui-active"
 });

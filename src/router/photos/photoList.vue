@@ -4,7 +4,7 @@
         <div id="slider" class="mui-slider">
             <div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
                 <div class="mui-scroll" >
-                  <a :class="{'mui-control-item':true, 'mui-active':item.id==0}" v-for="(item) in imgCategories" :key="item.id">
+                  <a :class="{'mui-control-item':true, 'mui-active':item.id==0}" v-for="(item) in imgCategories" :key="item.id" @click="getImgList(item.id)">
                     {{item.title}}
                   </a>
                 </div>
@@ -12,6 +12,16 @@
         </div>
 
       <!-- 加载图片 -->
+      <ul class="lazy_img">
+
+        <router-link :to="'/home/photoInfo/'+item.id" v-for="item in imgList" :key="item.id" tag="li">
+          <img v-lazy="item.img_url" >
+          <div class="info">
+            <h1 class="info-title">{{ item.title }}</h1>
+            <div class="info-body">{{ item.zhaiyao }}</div>
+          </div>
+        </router-link>
+      </ul>
     </div>
 </template>
 <script>
@@ -20,12 +30,13 @@ import {Toast} from "mint-ui";
 export default {
   data(){
     return{
-      imgCategories:[]
+      imgCategories:[],
+      imgList:[]
     }
   },
   created(){
     this.getImgCategory()
-    this.getImgList()
+    this.getImgList(0)
   },
   methods:{
     getImgCategory(){
@@ -40,8 +51,16 @@ export default {
         }
       })
     },
-    getImgList(){
-      // this.$http.get('')
+    getImgList(cateid){
+      this.$http.get('api/getimages/'+cateid).then(result=>{
+        console.log(result);
+        if (result.body.status == 0) {
+          this.imgList = result.body.message;
+        } else {
+          // 失败的
+          Toast("加载分类标题失败");
+        }
+      })
       
     }
   },
@@ -54,6 +73,45 @@ export default {
 </script>
 
 <style lang="less">
+
+.lazy_img{
+  padding: 10px;
+  width: 100%;
+  li{
+    background-color: #ccc;
+    margin-bottom: 10px;
+    position: relative;
+    img{
+      width: 100%;
+      vertical-align:middle;
+      text-align: center;
+      box-shadow: 0 0 9px #999;
+    }
+    .info {
+      width: 100%;
+      color: white;
+      text-align: left;
+      position: absolute;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      max-height: 84px;
+      .info-title {
+        font-size: 14px;
+      }
+      .info-body {
+        font-size: 13px;
+      }
+    }
+  }
+  img[lazy=loading] {
+    width: 100%;
+    margin: auto;
+    background-color: #ccc;
+  }
+  img[lazy=error]{
+    background-color: pink;
+  }
+}
 
 </style>
 

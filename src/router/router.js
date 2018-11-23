@@ -7,6 +7,7 @@ import shopcarComponent from "./shopcar";
 import newsListComponent from "./news/newsList.vue";
 import newsInfoComponent from "./news/newsInfo.vue";
 import photoListComponent from "./photos/photoList.vue";
+import photoInfoComponent from "./photos/photoInfo.vue";
 
 export default new Router({
   routes: [
@@ -18,7 +19,7 @@ export default new Router({
     { path: "/home/newsList", component: newsListComponent },
     { path: "/home/newsInfo/:id", component: newsInfoComponent },
     { path: "/home/photoList", component: photoListComponent },
-    // { path: "/home/photoInfo/:id", component: photoInfoComponent }
+    { path: "/home/photoInfo/:id", component: photoInfoComponent }
   ],
   linkActiveClass: "mui-active"
 });

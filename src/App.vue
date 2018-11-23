@@ -53,6 +53,9 @@
   .v-leave-active {
     transition: all 0.5s ease;
   }
+  .mint-header.is-fixed{
+    z-index: 1000;
+  }
   // 该类名，解决 tabbar 点击无法切换的问题
 .mui-bar-tab .mui-tab-item-llb.mui-active {
     color: #007aff;

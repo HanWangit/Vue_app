@@ -24,13 +24,15 @@ import "../lib/mui/css/mui.min.css";
 import "../lib/mui/css/icons-extra.css";
 
 //导入mintUi
-import { Header, Swipe, SwipeItem,Button } from "mint-ui";
+import { Header, Swipe, SwipeItem, Button } from "mint-ui";
+import { Lazyload } from "mint-ui";
+
 //注册
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Header.name, Header);
 Vue.component(Button.name, Button);
-
+Vue.use(Lazyload);
 //导入自己的样式文件
 import "../css/common.less";
 

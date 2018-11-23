@@ -33,6 +33,12 @@ Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Header.name, Header);
 Vue.component(Button.name, Button);
 Vue.use(Lazyload);
+
+// 导入图片预览
+import VuePreview from "vue2-preview";
+Vue.use(VuePreview);
+
+
 //导入自己的样式文件
 import "../css/common.less";
 

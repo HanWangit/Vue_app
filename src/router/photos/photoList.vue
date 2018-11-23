@@ -53,7 +53,6 @@ export default {
     },
     getImgList(cateid){
       this.$http.get('api/getimages/'+cateid).then(result=>{
-        console.log(result);
         if (result.body.status == 0) {
           this.imgList = result.body.message;
         } else {

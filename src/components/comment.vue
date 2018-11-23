@@ -33,7 +33,7 @@ export default{
                     this.commentList = this.commentList.concat(result.body.message);
                 } else {
                     // 失败的
-                    Toast("加载轮播图失败。。。");
+                    Toast("加载评论失败。。。");
                 }
             })
         },

@@ -1,7 +1,11 @@
 <template>
   <div id="app_container">
       <!-- 顶部头部 -->
-      <mt-header fixed title="Vue app"></mt-header>
+      <mt-header fixed title="Vue app">
+        <span slot="left" @click="goBack" v-show="flag">
+          <mt-button icon="back">返回</mt-button>
+        </span>
+      </mt-header>
 
       <!-- 底部导航 -->
       <nav class="mui-bar mui-bar-tab">
@@ -33,6 +37,30 @@
 </template>
 
 <script>
+export default{
+    data(){
+      return{
+        flag:false
+      }
+    },
+    created(){
+      this.flag=this.$route.path === "/home" ?false:true;
+    },
+    methods: {
+      goBack(){
+        this.$router.go(-1)
+      }
+    },
+    watch:{
+      "$route.path":function(newVal){
+        if(newVal === "/home"){
+          this.flag=false
+        }else{
+          this.flag=true
+        }
+      }
+    }
+}
 </script>
 
 <style lang="less">

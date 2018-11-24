@@ -1,13 +1,16 @@
 <template>
     <div class="home_container">
         <!-- 轮播 -->
-        <mt-swipe class="swiper" :auto="4000">
+        <!-- <mt-swipe class="swiper" :auto="4000">
             <mt-swipe-item v-for="(item,index) in swiperList" :key="index">
                 <router-link to="">
                     <img src="../../img/banner1.jpg" alt="" srcset="">
                 </router-link>
             </mt-swipe-item>
-        </mt-swipe>
+        </mt-swipe> -->
+
+        <swiper :swiperList="swiperList"></swiper>
+
         <!-- 九宫格 -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -17,7 +20,7 @@
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/photoList">
 		                    <img src="../../img/menu2.png" />
 		                    <div class="mui-media-body">图片分享</div></router-link></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/goodsList">
 		                    <img src="../../img/menu3.png" />
 		                    <div class="mui-media-body">商品购买</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
@@ -35,6 +38,7 @@
 </template>
 
 <script>
+import swiper from "../../components/swiper.vue"
 import {Toast} from "mint-ui";
 export default {
   data() {
@@ -56,23 +60,15 @@ export default {
         }
       });
     }
+  },
+  components:{
+    swiper
   }
 };
 </script>
 <style lang="less">
 .home_container {
-  .swiper {
-    height: 200px;
-    .router-link{
-      background-color: hotpink;
-    }
-    img,
-    a {
-      height: 100%;
-      width: 100%;
-      display: block;
-    }
-  }
+  
   .mui-grid-view {
     background-color: #fff;
     border: none;

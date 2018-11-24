@@ -5,37 +5,103 @@
         <div class="mui-card">
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
-                    这是一个最简单的卡片视图控件；卡片视图常用来显示完整独立的一段信息，比如一篇文章的预览图、作者信息、点赞数量等
+                    <swiper :swiperList="swiperList"></swiper>
                 </div>
             </div>
         </div>
         <!-- 购买 -->
         <div class="mui-card">
-            <div class="mui-card-header">页眉</div>
+            <div class="mui-card-header">{{goodsInfo.title}}</div>
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
-                    包含页眉页脚的卡片，页眉常用来显示面板标题，页脚用来显示额外信息或支持的操作（比如点赞、评论等）
+                    <p>
+                        <span>市场价: <del>￥{{goodsInfo.sell_price}}</del> </span>
+                        <span>销售价: <b class="market">￥{{goodsInfo.market_price}}</b></span>
+                    </p>
+                    <p>
+                        <span>购买数量:</span>
+                        <numbox :maxNum="goodsInfo.stock_quantity"></numbox>
+                    </p>
+                    <mt-button type="primary" size="small">立即购买</mt-button>
+                    <mt-button type="danger" size="small" @click="addToShopCar">加入购物车</mt-button>
                 </div>
             </div>
-            <div class="mui-card-footer">页脚</div>
         </div>
         <!-- 参数 -->
         <div class="mui-card">
-            <div class="mui-card-header">页眉</div>
+            <div class="mui-card-header">商品参数</div>
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
-                    包含页眉页脚的卡片，页眉常用来显示面板标题，页脚用来显示额外信息或支持的操作（比如点赞、评论等）
+                    <p>商品货号:{{goodsInfo.goods_no}} </p>
+                    <p>库存情况:{{goodsInfo.stock_quantity}} </p>
+                    <p>上架时间:{{goodsInfo.add_time | dateFormat}} </p>
                 </div>
             </div>
-            <div class="mui-card-footer">页脚</div>
+            <div class="mui-card-footer">
+                <mt-button type="primary" size="large" plain @click="goDesc(id)">图文介绍</mt-button>
+                <mt-button type="danger" size="large" plain @click="goComment(id)">商品评论</mt-button>
+            </div>
         </div>
     </div>
 </template>
 <script>
+import swiper from "../../components/swiper.vue"
+import numbox from "../../components/goodsinfo_num.vue"
 export default {
-    
+    data(){
+        return {
+            id: this.$route.params.id,
+            swiperList:[],
+            goodsInfo:{},
+        }
+    },
+    created(){
+        this.getswiperList();
+        this.getGoodsInfo();
+        
+    },
+    methods:{
+        getswiperList(){
+            this.$http.get("api/getthumimages/" + this.id).then(result=>{
+                if(result.body.status==0){
+                    this.swiperList = result.body.message;
+                }
+            })
+        },
+        getGoodsInfo(){
+            this.$http.get("api/goods/getinfo/" + this.id).then(result=>{
+                if(result.body.status==0){
+                    this.goodsInfo = result.body.message[0];
+                }
+            })
+        },
+        addToShopCar(){
+            //加入购物车
+        },
+        goDesc(){
+            //图文介绍
+        },
+        goComment(){
+            //商品评论
+        }
+    },
+    components:{
+        swiper,
+        numbox
+    }
 }
 </script>
 <style lang="less">
-
+.goods-info-container{
+    .market{
+        color: red;
+        font-size: 18px;
+    }
+    .mui-card-footer{
+        display: block;
+        button{
+            margin: 15px 0;    
+        }
+    }
+}
 </style>

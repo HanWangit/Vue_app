@@ -8,6 +8,8 @@ import newsListComponent from "./news/newsList.vue";
 import newsInfoComponent from "./news/newsInfo.vue";
 import photoListComponent from "./photos/photoList.vue";
 import photoInfoComponent from "./photos/photoInfo.vue";
+import goodsListComponent from "./goods/goodsList.vue";
+import goodsInfoComponent from "./goods/goodsInfo.vue";
 
 export default new Router({
   routes: [
@@ -19,7 +21,9 @@ export default new Router({
     { path: "/home/newsList", component: newsListComponent },
     { path: "/home/newsInfo/:id", component: newsInfoComponent },
     { path: "/home/photoList", component: photoListComponent },
-    { path: "/home/photoInfo/:id", component: photoInfoComponent }
+    { path: "/home/photoInfo/:id", component: photoInfoComponent },
+    { path: "/home/goodsList", component: goodsListComponent },
+    { path: "/home/goodsInfo/:id", component: goodsInfoComponent, name:"goodsInfo"}
   ],
   linkActiveClass: "mui-active"
 });

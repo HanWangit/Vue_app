@@ -4,7 +4,7 @@
         <div id="slider" class="mui-slider">
             <div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
                 <div class="mui-scroll" >
-                  <a :class="{'mui-control-item':true, 'mui-active':item.id==0}" v-for="(item) in imgCategories" :key="item.id" @click="getImgList(item.id)">
+                  <a :class="{'mui-control-item':true, 'mui-active':item.id==0}" v-for="(item) in imgCategories" :key="item.id" @tap="getImgList(item.id)">
                     {{item.title}}
                   </a>
                 </div>

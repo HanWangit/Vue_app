@@ -51,6 +51,7 @@ export default {
         },
         goDetails(id){
             this.$router.push({name:'goodsInfo',params:{id}});
+            // console.log(id);
         }
     }
 }

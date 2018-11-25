@@ -76,7 +76,6 @@ export default{
     }
     .cmt_list{
         .cmt_title{
-            height: 30px;
             line-height: 30px;
             background-color: #ccc;
         }

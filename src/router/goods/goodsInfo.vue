@@ -85,7 +85,14 @@ export default {
         addToShopCar(){
             //加入购物车
             this.ballflag = !this.ballflag;
-            
+           var goodsinfo = {
+               id:this.id,
+               count:this.selectedCount,
+               selected: false //是否选中
+           }
+            // 调用 store 中的 mutations 来将商品加入购物车
+           this.$store.commit("addToCar", goodsinfo);
+           
         },
         beforeEnter(el){
             el.style.transform = "translate(0,0)"

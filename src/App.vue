@@ -19,7 +19,7 @@
         </router-link>
         <router-link class="mui-tab-item-llb" to="/shopcar">
           <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-            <span class="mui-badge" id="badge">0</span>
+            <span class="mui-badge" id="badge">{{getAllCount}}</span>
           </span>
           <span class="mui-tab-label">购物车</span>
         </router-link>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex"
 export default{
     data(){
       return{
@@ -47,6 +48,7 @@ export default{
       this.flag=this.$route.path === "/home" ?false:true;
     },
     methods: {
+      
       goBack(){
         this.$router.go(-1)
       }
@@ -59,6 +61,9 @@ export default{
           this.flag=true
         }
       }
+    },
+    computed:{
+      ...mapGetters(['getAllCount']),
     }
 }
 </script>

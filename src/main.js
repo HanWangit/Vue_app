@@ -6,6 +6,9 @@ import VueRouter from "vue-router";
 // 1.2 安装路由
 Vue.use(VueRouter);
 
+//导入 Store状态文件
+import store from "./store"
+
 // 导入vue-resource的包
 import VueResource from "vue-resource";
 Vue.use(VueResource);
@@ -50,5 +53,6 @@ Vue.http.options.emulateJSON = true;
 new Vue({
   el: "#app",
   router,
+  store, // 挂载 store 状态管理对象
   render: h => h(App)
 });

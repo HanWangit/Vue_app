@@ -48,7 +48,6 @@ export default{
       this.flag=this.$route.path === "/home" ?false:true;
     },
     methods: {
-      
       goBack(){
         this.$router.go(-1)
       }

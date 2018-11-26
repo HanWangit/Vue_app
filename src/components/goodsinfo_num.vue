@@ -10,7 +10,6 @@ export default {
     data(){
         return{
             num:1,
-            flag:false
         }
     },
     methods:{
